@@ -8,7 +8,7 @@ class Movie < ActiveRecord::Base
     else
       moviesRatings = []
       ratings_list.each { |r| moviesRatings.append(Movie.where(:rating, r))}
-      return ratings_list
+      return moviesRatings
     end
   end
   
