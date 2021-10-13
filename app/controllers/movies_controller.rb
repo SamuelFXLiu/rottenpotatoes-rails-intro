@@ -8,6 +8,7 @@ class MoviesController < ApplicationController
 
   def index
     @all_ratings = Movie.all_ratings
+    @ratings_to_show = params[:rating]
     @movies = Movie.all
   end
 
@@ -38,13 +39,7 @@ class MoviesController < ApplicationController
     flash[:notice] = "Movie '#{@movie.title}' deleted."
     redirect_to movies_path
   end
-  
-  def all_ratings
-    
-  end
-  
-  def include
-  end
+
 
   private
   # Making "internal" methods private is not required, but is a common practice.
