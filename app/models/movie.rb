@@ -6,7 +6,7 @@ class Movie < ActiveRecord::Base
     if (ratings_list == nil)
       return Movie.all
     else
-      puts Movie.where(:rating, ratings_list)
+      puts Movie.all
       return Movie.where(:rating, ratings_list)
     end
   end
