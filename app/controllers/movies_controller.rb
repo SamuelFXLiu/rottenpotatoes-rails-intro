@@ -10,17 +10,18 @@ class MoviesController < ApplicationController
   def index
     @all_ratings = Movie.all_ratings
     @movies = Movie.all
-    params[:sort] = session[:current_sort]
     
-    if (params[:sort] != nil) 
+    if (session[:current_sort] != nil or params[:sort] != nil) 
       session[:current_sort] = params[:sort]
       if (params[:sort] == "title")
         @cssTitle = "hilite bg-warning"
-      else
+      elsif (params[:sort] == "release_date")
         @cssHeader = "hilite bg-warning"
       end
       @movies = @movies.sorCol(params[:sort])
     end
+    
+    params[:sort] = session[:current_sort]
     
     if (params.include?(:ratings))
       @ratings_to_show = params[:ratings].keys
