@@ -12,6 +12,10 @@ class MoviesController < ApplicationController
     @ratings_to_show = @all_ratings
     
     if (!params.include?(:ratings) && !params.include?(:sort))
+      if (session[:curr_sort] == nil && session[:curr_filter] != nil)
+        newHash = {"ratings" => session[:curr_filter]}
+        reset_session
+        redirect_to movies_path(newHash)
       if (session[:curr_sort] != nil && session[:curr_filter] != nil)
         newHash = {"sort" => session[:curr_sort]}.merge(
           {"ratings" => session[:curr_filter]})
