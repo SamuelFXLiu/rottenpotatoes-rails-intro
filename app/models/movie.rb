@@ -10,8 +10,8 @@ class Movie < ActiveRecord::Base
     end
   end
   
-  def self.sorCol(head)
-    return Movie.order(head)
+  def self.sorCol(sortedBy)
+    return Movie.order(sortedBy[0])
   end
   
   def self.all_ratings

@@ -21,7 +21,7 @@ class MoviesController < ApplicationController
     
     puts params
     if (params.include?(:sort))
-      @movies = Movie.sorCol(:sort)
+      @movies = Movie.sorCol(params[:sort].values)
     end
     
   end
