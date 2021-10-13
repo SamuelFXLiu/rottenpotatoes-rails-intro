@@ -20,9 +20,7 @@ class MoviesController < ApplicationController
       end
       @movies = @movies.sorCol(params[:sort])
     end
-    
-    params[:sort] = session[:current_sort]
-    
+        
     if (params.include?(:ratings))
       @ratings_to_show = params[:ratings].keys
       @movies = @movies.with_ratings(@ratings_to_show)
