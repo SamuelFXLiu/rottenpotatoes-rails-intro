@@ -15,6 +15,7 @@ class MoviesController < ApplicationController
       if (session[:curr_sort] != nil && session[:curr_filter] != nil)
         params[:sort] = session[:curr_sort]
         params[:ratings] = session[:curr_filter]
+        reset_session
         redirect_to movies_path
       end
     end
