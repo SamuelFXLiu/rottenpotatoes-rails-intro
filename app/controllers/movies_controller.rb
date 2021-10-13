@@ -13,9 +13,7 @@ class MoviesController < ApplicationController
     
     if (!params.include?(:ratings) && !params.include?(:sort))
       if (session[:curr_sort] != nil && session[:curr_filter] != nil)
-        params[:sort] = session[:curr_sort]
-        params[:ratings] = session[:curr_filter]
-        session.clear
+        redirect_to movies_path(session[:sort].merge(session[:ratings]))
       end
     end
     
