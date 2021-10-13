@@ -9,12 +9,13 @@ class MoviesController < ApplicationController
 
   def index
     @all_ratings = Movie.all_ratings
+    @movies = Movie.all
+    puts params
     if (params.has_value?("1"))
       @ratings_to_show = params[:ratings].keys
-      @movies = Movie.with_ratings(@ratings_to_show)
+      @movies = @movies.with_ratings(@ratings_to_show)
     else
       @ratings_to_show = []
-      @movies = Movie.all
     end
     
     if (params.include?(:sort)) 
@@ -23,7 +24,7 @@ class MoviesController < ApplicationController
       else
         @cssHeader = "hilite bg-warning"
       end
-      @movies = Movie.sorCol(params[:sort])
+      @movies = @movies.sorCol(params[:sort])
     end
     
   end
