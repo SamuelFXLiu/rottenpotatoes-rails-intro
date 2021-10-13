@@ -19,7 +19,6 @@ class MoviesController < ApplicationController
       @movies = Movie.all
     end
     
-    puts params
     if (params.include?(:sort))
       if (params[:sort] == "title")
         @cssTitle = "hilite bg-warning"
