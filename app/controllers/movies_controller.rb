@@ -8,6 +8,9 @@ class MoviesController < ApplicationController
   end
 
   def index
+    @all_ratings = Movie.all_ratings
+    @movies = Movie.all
+    
     if (params[:sort] != nil) 
       session[:current_sort] = params[:sort]
       if (params[:sort] == "title")
@@ -20,8 +23,6 @@ class MoviesController < ApplicationController
     
     params[:sort] = session[:current_sort]
     
-    @all_ratings = Movie.all_ratings
-    @movies = Movie.all
     if (params.include?(:ratings))
       @ratings_to_show = params[:ratings].keys
       @movies = @movies.with_ratings(@ratings_to_show)
