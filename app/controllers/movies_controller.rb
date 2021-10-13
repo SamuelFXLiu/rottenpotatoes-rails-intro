@@ -20,13 +20,12 @@ class MoviesController < ApplicationController
     end
     
     if (params.include?(:sort)) 
-      @ratings_to_show = params.index("1")
       if (params[:sort] == "title")
         @cssTitle = "hilite bg-warning"
       else
         @cssHeader = "hilite bg-warning"
       end
-      @movies = Movie.with_ratings(@ratings_to_show).sorCol(params[:sort])
+      @movies = Movie.sorCol(params[:sort])
     end
     
   end
