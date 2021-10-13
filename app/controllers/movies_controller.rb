@@ -10,6 +10,7 @@ class MoviesController < ApplicationController
   def index
     @all_ratings = Movie.all_ratings
     @movies = Movie.all
+    params[:sort] = session[:current_sort]
     
     if (params[:sort] != nil) 
       session[:current_sort] = params[:sort]
@@ -20,8 +21,6 @@ class MoviesController < ApplicationController
       end
       @movies = @movies.sorCol(params[:sort])
     end
-    
-    params[:sort] = session[:current_sort]
     
     if (params.include?(:ratings))
       @ratings_to_show = params[:ratings].keys
