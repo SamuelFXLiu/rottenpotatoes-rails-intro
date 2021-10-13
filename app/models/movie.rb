@@ -10,6 +10,10 @@ class Movie < ActiveRecord::Base
     end
   end
   
+  def self.sorCol(head)
+    return Movie.order(:head)
+  end
+  
   def self.all_ratings
     return ['G', 'PG', 'PG-13', 'R']
   end

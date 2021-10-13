@@ -8,7 +8,6 @@ class MoviesController < ApplicationController
   end
 
   def index
-    puts params
     @all_ratings = Movie.all_ratings
     @ratings_to_show = []
     if (params.include?(:ratings))
@@ -18,6 +17,11 @@ class MoviesController < ApplicationController
       @movies = Movie.with_ratings(@ratings_to_show)
     else
       @movies = Movie.all
+    end
+    
+    puts params
+    if (params.include?(:sort))
+      @movies = Movie.sorCol(:sort)
     end
     
   end
