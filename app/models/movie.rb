@@ -11,7 +11,7 @@ class Movie < ActiveRecord::Base
   end
   
   def self.sorCol(head)
-    return Movie.order(:head)
+    return Movie.order(head)
   end
   
   def self.all_ratings
