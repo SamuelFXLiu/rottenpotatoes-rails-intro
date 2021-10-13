@@ -21,10 +21,11 @@ class MoviesController < ApplicationController
     end
     
     if session[:curr_sort] != nil && params.include?(:ratings) 
-      && !params.include?(:sort)
-      newHash = {"sort" => session[:curr_sort]}.merge(
-          {"ratings" => params[:ratings]})
-      redirect_to movies_path(newHash)
+      if !params.include?(:sort)
+        newHash = {"sort" => session[:curr_sort]}.merge(
+            {"ratings" => params[:ratings]})
+        redirect_to movies_path(newHash)
+      end
     end
     
     if (params.include?(:sort)) 
