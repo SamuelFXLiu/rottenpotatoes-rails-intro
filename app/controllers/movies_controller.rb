@@ -20,6 +20,13 @@ class MoviesController < ApplicationController
       end
     end
     
+    if (session[:curr_sort] != nil && params.include?(:ratings) 
+      && !params.include?(:sort))
+      newHash = {"sort" => session[:curr_sort]}.merge(
+          {"ratings" => params[:ratings]})
+      redirect_to movies_path(newHash)
+    end
+    
     if (params.include?(:sort)) 
       if (params[:sort] == "title")
         @cssTitle = "hilite bg-warning"
