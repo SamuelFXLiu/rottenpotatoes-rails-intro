@@ -14,8 +14,10 @@ class MoviesController < ApplicationController
     @movies = Movie.all
     
     if (!params.include?(:ratings) && !params.include?(:sort))
-      params[:sort] = session[:curr_sort]
-      params[:ratings] = session[:curr_filter]
+      if (session[:curr_sort] != nil && session[:curr_filter] != nil)
+        params[:sort] = session[:curr_sort]
+        params[:ratings] = session[:curr_filter]
+      end
     end
     
     if (params.include?(:sort)) 
