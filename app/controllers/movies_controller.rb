@@ -1,9 +1,6 @@
 class MoviesController < ApplicationController
   
   def show
-    
-    session[:curr_sort] = params[:sort]
-    session[:curr_filter] = params[:ratings]
     id = params[:id] # retrieve movie ID from URI route
     puts session[:curr_sort]
     @movie = Movie.find(id) # look up movie by unique ID
@@ -36,6 +33,9 @@ class MoviesController < ApplicationController
     else
       @ratings_to_show = []
     end
+    
+    session[:curr_sort] = params[:sort]
+    session[:curr_filter] = params[:ratings]
     
   end
 
