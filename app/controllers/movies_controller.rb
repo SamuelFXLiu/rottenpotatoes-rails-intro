@@ -1,9 +1,7 @@
 class MoviesController < ApplicationController
   
   def show
-    if (params[:ratings].length > 0)
-      @ratings_to_show = params[:ratings].keys
-    end
+    
     id = params[:id] # retrieve movie ID from URI route
     @movie = Movie.find(id) # look up movie by unique ID
     # will render app/views/movies/show.<extension> by default
@@ -13,6 +11,11 @@ class MoviesController < ApplicationController
     @all_ratings = Movie.all_ratings
     @ratings_to_show = []
     puts params
+    if (params.include?(:ratings))
+      if (params[:ratings].length > 0)
+      @ratings_to_show = params[:ratings].keys
+      end
+    end
     @movies = Movie.with_ratings(params[:ratings])
   end
 
