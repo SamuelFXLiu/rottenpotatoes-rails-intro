@@ -8,6 +8,7 @@ class MoviesController < ApplicationController
   end
 
   def index
+    puts params
     @all_ratings = Movie.all_ratings
     @ratings_to_show = []
     if (params.include?(:ratings))
