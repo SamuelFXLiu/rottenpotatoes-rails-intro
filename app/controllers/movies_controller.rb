@@ -6,6 +6,7 @@ class MoviesController < ApplicationController
     @movie = Movie.find(id) # look up movie by unique ID
     session[:curr_sort] = params[:sort]
     session[:curr_filter] = params[:ratings]
+    puts session
     # will render app/views/movies/show.<extension> by default
   end
 
