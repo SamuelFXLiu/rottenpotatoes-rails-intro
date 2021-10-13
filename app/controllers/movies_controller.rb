@@ -9,7 +9,7 @@ class MoviesController < ApplicationController
   def index
     @all_ratings = Movie.all_ratings
     @ratings_to_show = []
-    put :ratings
+    puts :ratings
     if (:ratings.length > 0)
       @ratings_to_show = :ratings.keys
     end
