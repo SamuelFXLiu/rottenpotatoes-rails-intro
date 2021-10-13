@@ -21,7 +21,7 @@ class MoviesController < ApplicationController
     
     puts params
     if (params.include?(:sort))
-      @cssHigh = "hilite text-warning"
+      @cssHigh = "hilite bg-warning"
       @movies = Movie.sorCol(params[:sort])
     end
     
