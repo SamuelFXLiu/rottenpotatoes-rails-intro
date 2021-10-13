@@ -41,6 +41,9 @@ class MoviesController < ApplicationController
   def all_ratings
     @all_ratings = Movie.all_ratings()
   end
+  
+  def include
+  end
 
   private
   # Making "internal" methods private is not required, but is a common practice.
