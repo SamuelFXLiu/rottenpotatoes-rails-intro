@@ -16,7 +16,7 @@
   <thead>
     <tr>
       <th class="<%= @cssTitle %>"> <%= link_to "Movie Title", 
-          movies_path({"sort" => "title", Hash[@ratings_to_show.collect { |r| [r, 1] } ]}), 
+          movies_path({"sort" => "title"}.merge(Hash[@ratings_to_show.collect { |r| [r, 1] } ])), 
           :id => 'title_header'%> </th>
       <th>Rating</th>
       <th class="<%= @cssHeader %>"> <%= link_to "Release Date", 
