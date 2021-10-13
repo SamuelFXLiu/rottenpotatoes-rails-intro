@@ -15,8 +15,11 @@ class MoviesController < ApplicationController
       if (params[:ratings].length > 0)
       @ratings_to_show = params[:ratings].keys
       end
+      @movies = Movie.with_ratings(@ratings_to_show)
+    else
+      @movies = Movie.all
     end
-    @movies = Movie.with_ratings(@ratings_to_show)
+    
   end
 
   def new
