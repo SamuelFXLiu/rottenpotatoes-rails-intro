@@ -11,9 +11,7 @@ class MoviesController < ApplicationController
     @all_ratings = Movie.all_ratings
     @ratings_to_show = []
     if (params.include?(:ratings))
-      if (params[:ratings].length > 0)
-        @ratings_to_show = params[:ratings].keys
-      end
+      @ratings_to_show = params[:ratings].keys
       @movies = Movie.with_ratings(@ratings_to_show)
     else
       @movies = Movie.all
