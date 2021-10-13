@@ -11,6 +11,14 @@ class MoviesController < ApplicationController
     @movies = Movie.all
     @ratings_to_show = @all_ratings
     
+    if (!params.include?(:ratings) && !params.include?(:sort))
+      if (session[:curr_sort] != nil && session[:curr_filter] != nil)
+        params[:sort] = session[:curr_sort]
+        params[:ratings] = session[:curr_filter]
+        reset_session
+      end
+    end
+    
     if (params.include?(:sort)) 
       if (params[:sort] == "title")
         @cssTitle = "hilite bg-warning"
@@ -23,13 +31,6 @@ class MoviesController < ApplicationController
     if (params.include?(:ratings))
       @ratings_to_show = params[:ratings].keys
       @movies = @movies.with_ratings(@ratings_to_show)
-    end
-    
-    if (!params.include?(:ratings) && !params.include?(:sort))
-        params[:sort] = session[:curr_sort]
-        params[:ratings] = session[:curr_filter]
-        reset_session
-        redirect_to movies_path
     end
     
     session[:curr_sort] = params[:sort]
