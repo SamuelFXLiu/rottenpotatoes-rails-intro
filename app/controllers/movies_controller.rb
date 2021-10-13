@@ -11,8 +11,7 @@ class MoviesController < ApplicationController
     @all_ratings = Movie.all_ratings
     @movies = Movie.all
     
-    if (session[:current_sort] != nil or params[:sort] != nil) 
-      session[:current_sort] = params[:sort]
+    if (params.include?(:sort)) 
       if (params[:sort] == "title")
         @cssTitle = "hilite bg-warning"
       elsif (params[:sort] == "release_date")
