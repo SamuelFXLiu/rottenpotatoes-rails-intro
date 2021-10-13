@@ -15,6 +15,7 @@ class MoviesController < ApplicationController
       if (session[:curr_sort] != nil && session[:curr_filter] != nil)
         params[:sort] = session[:curr_sort]
         params[:ratings] = session[:curr_filter]
+        redirect_to movies_path
       end
     end
     
@@ -35,7 +36,6 @@ class MoviesController < ApplicationController
     session[:curr_sort] = params[:sort]
     session[:curr_filter] = params[:ratings]
     
-    redirect_to movies_path
   end
 
   def new
